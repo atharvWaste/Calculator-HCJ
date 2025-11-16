@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Fun With Maths</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="calculator">
+
+    <input type="text" id="display" readonly>
+
+    <div class="row">
+                <div class="box"><label></label><input type="button" id="expand" value="<>"></div>
+        <div class="box"><label></label><input type="button" id="del" value="C" onclick="deleteMe()"></div>
+        <div class="box"><label></label><input type="button" id="ac" value="AC" onclick="AllClearMe()"></div>
+        <div class="box"><label></label><input type="button" id="division" value="/"onclick="printMeMAth(this)"></div>
+    </div>
+    <div class="row">
+                <div class="box"><label></label><input type="button" id="seven" value="7" onclick="printMe(this)"></div>
+        <div class="box"><label></label><input type="button" id="eignt" value="8" onclick="printMe(this)"></div>
+        <div class="box"><label></label><input type="button" id="nine" value="9" onclick="printMe(this)"></div>
+
+
+        <div class="box"><label></label><input type="button" id="mul" value="*" onclick="printMeMAth(this)"></div>
+    </div>
+
+    <div class="row">
+                <div class="box"><label></label><input type="button" id="four" value="4" onclick="printMe(this)"></div>
+        <div class="box"><label></label><input type="button" id="five" value="5" onclick="printMe(this)"></div>
+        <div class="box"><label></label><input type="button" id="six" value="6" onclick="printMe(this)"></div>
+
+
+        <div class="box"><label></label><input type="button" id="min" value="-" onclick="printMeMAth(this)"></div>
+    </div>
+
+    <div class="row">
+                <div class="box"><label></label><input type="button" id="one" value="1" onclick="printMe(this)"></div>
+        <div class="box"><label></label><input type="button" id="two" value="2" onclick="printMe(this)"></div>
+        <div class="box"><label></label><input type="button" id="three" value="3" onclick="printMe(this)"></div>
+        <div class="box"><label></label><input type="button" id="add" value="+"onclick="printMeMAth(this)"></div>
+    </div>
+
+        <div class="row">
+        <div class="box"><label></label><input type="button" id="percentage" value="%" onclick="printMeMAth(this)"></div>
+        <div class="box"><label></label><input type="button" id="zero" value="0" onclick="printMe(this)"></div>
+        <div class="box"><label></label><input type="button" id="dot" value="." onclick="printMe(this)"></div>
+        <div class="box"><label></label><input type="button" id="equal" value="=" onclick="calculator()"></div>
+
+    </div>
+
+</div>
+
+<script src="index.js">
+</script>
+</body>
+</html>
