@@ -4,6 +4,8 @@ var toChack2 = false;
 var justCalculated = false;  
 // too solve problem 1
 var lastCalculated = false;
+
+
 function printMe(btn) {
     var display = document.getElementById("display");
 
@@ -11,7 +13,6 @@ function printMe(btn) {
     if (justCalculated) {
         display.value = "";
         justCalculated = false;
-         lastCalculated = false;
     }
 
     console.log("num op");
@@ -35,10 +36,13 @@ if(lastCalculated === false){
     display.value += btn.value;
     toChack2 = true;
     lastCalculated = true;
-}else {
-     display.value = "Syntax Error";
 }
+else {
 
+     display.value = "Syntax Error";
+     toChack2 = false;
+     lastCalculated = false;
+}
 }
 
 
@@ -60,6 +64,8 @@ function AllClearMe() {
     toChack1 = false;
     toChack2 = false;
     justCalculated = false;
+    lastCalculated = false;
+
 }
 
 document.getElementById("ac").onclick = AllClearMe;
@@ -68,9 +74,37 @@ document.getElementById("ac").onclick = AllClearMe;
 function calculator() {
     var display = document.getElementById("display");
 
+    // ✅ allow sin(30), cos(60), log(100)
+    if (display.value.includes("(")) {
+        toChack1 = true;
+        toChack2 = true;
+    }
+
     if (toChack1 && toChack2) {
         try {
-            display.value = eval(display.value);
+            if (
+                display.value.startsWith("sin(") ||
+                display.value.startsWith("cos(") ||
+                display.value.startsWith("log(")
+            ) {
+
+                let raw = display.value;
+                let num = raw.slice(raw.indexOf("(") + 1);
+                num = parseFloat(num);
+
+                if (!isNaN(num)) {
+                    if (raw.startsWith("sin(")) display.value = Math.sin(num * Math.PI / 180);
+                    if (raw.startsWith("cos(")) display.value = Math.cos(num * Math.PI / 180);
+                    if (raw.startsWith("log(")) display.value = Math.log10(num);
+                } else {
+                    AllClearMe();
+                    return;
+                }
+
+            } else {
+                display.value = eval(display.value);
+            }
+
         } catch (error) {
             AllClearMe();
             return;
@@ -78,10 +112,11 @@ function calculator() {
 
         // Mark that "=" was pressed
         justCalculated = true;
-
+        
         // Reset chack command
         toChack1 = false;
         toChack2 = false;
+        lastCalculated = false;
 
     } else {
         AllClearMe();
@@ -89,7 +124,20 @@ function calculator() {
 }
 
 
-//problem1: muliple oprtors can be used like -++ in single row
-// solution : display var kay aahe te check karayala lage....
-//printMeMAth or printMe var condition lavavi lage.
-// logic : lagun don math op disayala nako.
+
+// problem 2 :expand btn not working.
+function expandMe(btn) {
+    console.log("Expanding");
+let expandedBox =  document.createElement("div");
+expandedBox.classList.add("row");//to add the class as row
+ const parentElement =document.getElementsByClassName("calculator")[0]
+expandedBox.innerHTML = 
+`  
+        <div class="box"><label></label><input type="button" id="sin" value="sin(" onclick="printMe(this)"></div>
+        <div class="box"><label></label><input type="button" id="cos" value="cos(" onclick="printMe(this)"></div>
+        <div class="box"><label></label><input type="button" id="log" value="log(" onclick="printMe(this)"></div>
+    `;
+ console.log(expandedBox);
+
+ btn.parentElement.parentNode.replaceChild(expandedBox, btn.parentElement);
+}
