@@ -81,7 +81,6 @@ Improve UI design
 
 Add scientific calculator features
 
-Add dark/light mode
 
 Upload to GitHub Pages
 
