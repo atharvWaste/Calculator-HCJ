@@ -1,7 +1,7 @@
 <h1> Calculator – HTML | CSS | JavaScript </h1>
 
 <h2>✍️ Author</h2>
-Atharv Rameshwar Waste (Ekalavya)
+<h3>Atharv Rameshwar Waste (Ekalavya)<br></h3>
 A learner exploring Web Development, JavaScript, DSA.
 
 
