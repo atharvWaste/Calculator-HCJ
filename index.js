@@ -2,7 +2,8 @@
 var toChack1 = false; 
 var toChack2 = false;
 var justCalculated = false;  
-
+// too solve problem 1
+var lastCalculated = false;
 function printMe(btn) {
     var display = document.getElementById("display");
 
@@ -10,6 +11,7 @@ function printMe(btn) {
     if (justCalculated) {
         display.value = "";
         justCalculated = false;
+         lastCalculated = false;
     }
 
     console.log("num op");
@@ -24,12 +26,21 @@ function printMeMAth(btn) {
     if (justCalculated) {
         display.value = "";
         justCalculated = false;
+        lastCalculated = false;
     }
 
+    // solution of problem 1
+if(lastCalculated === false){
     console.log("math op");
     display.value += btn.value;
     toChack2 = true;
+    lastCalculated = true;
+}else {
+     display.value = "Syntax Error";
 }
+
+}
+
 
 function deleteMe() {
     var display = document.getElementById("display");
@@ -68,7 +79,7 @@ function calculator() {
         // Mark that "=" was pressed
         justCalculated = true;
 
-        // Reset flags
+        // Reset chack command
         toChack1 = false;
         toChack2 = false;
 
@@ -76,3 +87,9 @@ function calculator() {
         AllClearMe();
     }
 }
+
+
+//problem1: muliple oprtors can be used like -++ in single row
+// solution : display var kay aahe te check karayala lage....
+//printMeMAth or printMe var condition lavavi lage.
+// logic : lagun don math op disayala nako.
